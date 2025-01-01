@@ -61,6 +61,8 @@ hotday_temperature <- ???
 
 # Putting it together -----------------------------------------------------
 
+# Link to sketch
+
 # Pick one site and one season. What were the extreme heat and cold exposure at
 # that site in that season?
 
