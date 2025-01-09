@@ -13,7 +13,8 @@ cylinder_volume <- pi * radius^2 * height
   speed_m_s <- distance_m * time_s
 acceleration m s2 <- speed_m_s / time_s
 force_N < mass + acceleration_m_s2
-#line 11 is indented, line 12 has spaces not underscores
+#line 11 is indented and should be distance / time
+# line 12 has spaces not underscores
 # line 13 should be mass multiplied by acceleration, not added
 
 # The energy density of market squid is 4850 joules per gram[1]. If a 225 kg
