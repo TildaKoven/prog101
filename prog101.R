@@ -1,7 +1,7 @@
 ##########################################################################
-## Driver: (Name) (GitHub Handle)                                       ##
-## Navigator: (Name) (GitHub Handle)                                    ##
-## Date: (YYYY-MM-DD)                                                   ##
+## Driver: (Tilda Koven) (@TildaKoven)                                       ##
+## Navigator: (Stella Freedberg) (@Stellafreedberg)                                    ##
+## Date: (2025-01-09)                                                   ##
 ##########################################################################
 
 library(marinecs100b)
@@ -9,25 +9,39 @@ library(marinecs100b)
 # Guiding questions -------------------------------------------------------
 
 # What does KEFJ stand for?
+# Kenai Fjords
 
 # How was temperature monitored?
+# With HOBO V2 temperature loggers which are temperature sensors
+# that are in the water
 
 # What's the difference between absolute temperature and temperature anomaly?
-
+# anomaly temperature: regional mean - seasonal local water temp
+# absolute temperature is the average while anomaly is the variation
 
 # Begin exploring ---------------------------------------------------------
 
 # How many kefj_* vectors are there?
-
+# there are six kefj_* vectors
 # How long are they?
-
+# they are all vectors of length 2187966
 # What do they represent?
-
+# They represent the multiple aspects of the data from KEFJ
 # Link to sketch
 
-???_datetime <- kefj_datetime[kefj_site == ???]
-???_interval <- ???_datetime[-1] - ???_datetime[-???]
-t???e(???)
+print(kefj_site[10])
+kefj_1_datetime <- kefj_datetime[kefj_site == "Aialik"]
+datetime_interval <- kefj_1_datetime[2:length(kefj_1_datetime)] - kefj_1_datetime[1:(length(kefj_1_datetime)-1)]
+table(datetime_interval)
+
+# Line 32 gives us the name of the kefj site. the numerical value doesn't matter
+# as long as it's between 1 and the length of vector
+# Line 33 assigns the datetime data of the Aialik site to our term name
+# Line 34 gets the sample interval by subtracting the vector that is the first
+# term to the second to last term from the vector that is the second term
+# to the last term
+# Line 35 puts that in a table where we can see that the time interval of 30
+# appears 262735 times, significantly more than any other time interval.
 
 
 # Problem decomposition ---------------------------------------------------
