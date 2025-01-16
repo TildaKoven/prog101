@@ -47,30 +47,61 @@ table(datetime_interval)
 # Problem decomposition ---------------------------------------------------
 
 # When and where did the hottest and coldest air temperature readings happen?
-
+which.min(kefj_temperature)
+# determines which term in the vector is the minimum temp
+kefj_datetime[63809]
+# indexes datetime for just when min tep
+kefj_site[63809]
+# indexes site for just when min temp
+which.max(kefj_temperature)
+# determines which term in vector is max temp
+kefj_datetime[158962]
+# indexes datetime for when max temp
+kefj_site[which.max(kefj_temperature)]
+# indexes site for when max temp
 # Link to sketch
 
 # Plot the hottest day
 
-hottest_idx <- ???(kefj_temperature)
-hottest_time <- ???[hottest_idx]
-??? <- kefj_site[???]
-hotday_start <- as.POSIXct("???", tz = "Etc/GMT+8")
-hotday_end <- as.POSIXct("???", tz = "Etc/GMT+8")
-hotday_idx <- ??? == hottest_site &
-  ??? >= hotday_start &
-  ??? <= hotday_end
-hotday_datetime <- ???[hotday_idx]
-hotday_temperature <- ???
-hotday_exposure <- ???
-plot_kefj(???, ???, ???)
+hottest_idx <- which.max(kefj_temperature)
+hottest_time <- kefj_datetime[hottest_idx]
+hottest_site <- kefj_site[hottest_idx]
+hotday_start <- as.POSIXct("2018-07-03 00:00:00", tz = "Etc/GMT+8")
+hotday_end <- as.POSIXct("2018-07-03 23:59:59", tz = "Etc/GMT+8")
+hotday_idx <- which(kefj_site == hottest_site &
+  kefj_datetime >= hotday_start &
+    kefj_datetime <= hotday_end)
+hotday_datetime <- kefj_datetime[hotday_idx]
+hotday_temperature <- kefj_temperature[hotday_idx]
+hotday_exposure <- kefj_exposure[hotday_idx]
+plot_kefj(hotday_datetime, hotday_temperature, hotday_exposure)
 
 # Repeat for the coldest day
+coldest_idx <- which.min(kefj_temperature)
+coldest_time <- kefj_datetime[coldest_idx]
+coldest_site <- kefj_site[coldest_idx]
+coldday_start <- as.POSIXct("2013-01-27 00:00:00", tz = "Etc/GMT+8")
+coldday_end <- as.POSIXct("2013-01-27 23:59:59", tz = "Etc/GMT+8")
+coldday_idx <- which(kefj_site == coldest_site &
+                      kefj_datetime >= coldday_start &
+                      kefj_datetime <= coldday_end)
+coldday_datetime <- kefj_datetime[coldday_idx]
+coldday_temperature <- kefj_temperature[coldday_idx]
+coldday_exposure <- kefj_exposure[coldday_idx]
+plot_kefj(coldday_datetime, coldday_temperature, coldday_exposure)
 
 # What patterns do you notice in time, temperature, and exposure? Do those
 # patterns match your intuition, or do they differ?
+# The hottest and coldest temperatures were when the sensor was in the air
+# not when it was in the water
+# Yes because it is hard to change the temperature of the ocean, but it is
+# easy for air temps to change. But also no because we thought we were solving
+#for water temperature
+# Hottest time is at midday, coldest time is at night, which both make sense.
 
 # How did Traiger et al. define extreme temperature exposure?
+# When the air temps fall outside the average maximum air temp in summer and
+# the average minimum air temp in winter
 
 # Translate their written description to code and calculate the extreme heat
 # exposure for the hottest day.
