@@ -1,6 +1,6 @@
 ##########################################################################
 ## Driver: (Tilda Koven) (@TildaKoven)                                       ##
-## Navigator: (Stella Freedberg) (@Stellafreedberg)                                    ##
+## Navigator: (Stella Freedberg) (@Stellafreedberg)                         ##
 ## Date: (2025-01-09)                                                   ##
 ##########################################################################
 
@@ -105,6 +105,7 @@ plot_kefj(coldday_datetime, coldday_temperature, coldday_exposure)
 
 # Translate their written description to code and calculate the extreme heat
 # exposure for the hottest day.
+
 
 # Compare your answer to the visualization you made. Does it look right to you?
 
